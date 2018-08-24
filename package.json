@@ -1,7 +1,7 @@
 {
   "name": "croptojs",
   "version": "1.0.0",
-  "description": "",
+  "description": "a simple js tool for crypto currenty",
   "main": "index.js",
   "scripts": {
     "test": "mocha --ui bdd"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/jasoncodingnow/croptojs.git"
   },
-  "author": "",
+  "author": "Jason",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jasoncodingnow/croptojs/issues"
@@ -23,5 +23,13 @@
     "secp256k1": "^3.5.2",
     "secure-random": "^1.1.1",
     "standard": "^11.0.1"
-  }
+  },
+  "keywords": [
+    "base58",
+    "blockchain",
+    "eckey",
+    "publickey",
+    "privatekey",
+    "crypto"
+  ]
 }
