@@ -11,7 +11,7 @@ a simple js tool for crypto currenty
 
  ```javascript
 
- const Base58  = require('cryptojs').Base58;
+ const Base58  = require('cryptojstool').Base58;
 
  let hex = "61";
  let result = Base58.encode(hex);
@@ -23,8 +23,8 @@ a simple js tool for crypto currenty
   * node 7.0 or above
 
  ## How to run ## 
-  * git clone https://github.com/jasoncodingnow/croptojs.git
-  * cd croptojs
+  * git clone https://github.com/jasoncodingnow/cryptojstool.git
+  * cd cryptojstool
   * npm install
   * npm test
 
