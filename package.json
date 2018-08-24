@@ -1,5 +1,5 @@
 {
-  "name": "croptojs",
+  "name": "cryptojs",
   "version": "1.0.0",
   "description": "a simple js tool for crypto currenty",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jasoncodingnow/croptojs.git"
+    "url": "git+https://github.com/jasoncodingnow/cryptojs.git"
   },
   "author": "Jason",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jasoncodingnow/croptojs/issues"
+    "url": "https://github.com/jasoncodingnow/cryptojs/issues"
   },
-  "homepage": "https://github.com/jasoncodingnow/croptojs#readme",
+  "homepage": "https://github.com/jasoncodingnow/cryptojs#readme",
   "dependencies": {
     "assert": "^1.4.1",
     "bignum": "^0.13.0",
