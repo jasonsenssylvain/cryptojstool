@@ -1,6 +1,6 @@
 {
   "name": "cryptojstool",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a simple js tool for crypto currenty",
   "main": "index.js",
   "scripts": {
