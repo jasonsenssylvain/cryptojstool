@@ -5,9 +5,20 @@ const ENCODED_ZERO  = ALPHABET[0];
 
 class Base58 {
 
-  static encode(source) {
+  static _init() {
+    if (!Base58.inited) {
+      Base58.ALPHABET_BUF = {};
+      for (let i = 0; i < ALPHABET.length; i++) {
+        Base58.ALPHABET_BUF[ALPHABET[i]] = i;
+      }
 
-    let buf = Buffer.from(source, 'hex');
+      Base58.inited = true;
+    }
+  }
+
+  static encode(buf) {
+    Base58._init();
+
     let str = "";
     let x = bignum.fromBuffer(buf);
     while(x.gt(0)) {
@@ -28,40 +39,41 @@ class Base58 {
     return joinArray;
   }
 
-  static decodeUnsafe(data) {
-    if (typeof data !== 'string') throw new TypeError('Expected String')
-    if (data.length === 0) return Buffer.allocUnsafe(0)
+  static decode(str) {
+    Base58._init();
 
-    let bytes = [0]
-    for (let i = 0; i < data.length; i++) {
-      let value = Base58.ALPHABET_MAP[data[i]];
-      if (value === undefined) return
+    if (!str || str.length == 0)
+      return "";
 
-      for (let j = 0, carry = value; j < bytes.length; ++j) {
-        carry += bytes[j] * ALPHABET.length
-        bytes[j] = carry & 0xff
-        carry >>= 8
-      }
+    let data = bignum(0);
+    for (let i = 0; i < str.length; i ++) {
+      let c = str[i];
 
-      while (carry > 0) {
-        bytes.push(carry & 0xff);
-        carry >>= 8;
-      }
+      let indexNum = Base58.ALPHABET_BUF[c];
+      if (indexNum == null || indexNum == undefined) 
+        throw new Error(`str error: ${str}`);
+
+      data = data.mul(58);
+      data = data.add(indexNum);
     }
 
-    // deal with leading zeros
-    for (let k = 0; data[k] === ALPHABET.charAt(0) && k < data.length - 1; ++k) {
-      bytes.push(0)
+    let i = 0;
+    while(i < str.length && str[i] == ENCODED_ZERO) {
+      i ++;
     }
 
-    return Buffer.from(bytes.reverse())
-  }
+    if (i > 0) {
+      let zb = new Buffer(i);
+      zb.fill(0);
+      if (i == str.length) {
+        return zb.toString();
+      }
 
-  static decode(data) {
-    let buf = Base58.decodeUnsafe(data);
+      data = data.toBuffer();
+      return Buffer.concat([zb, data], i + data.length);
+    }
 
-    if (buf) return buf;
-    throw new Error('Non-base' + BASE + ' character');
+    return data.toBuffer();
   }
 }
 
