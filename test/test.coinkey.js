@@ -120,5 +120,76 @@ describe('CoinKey', function () {
       });
     });
 
+    describe('+ fromWif()', function () {
+      it('should return a new CoinKey 1 ', function () {
+        let privateWif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD";
+        let versions = {"private": 128, "public": 0};
+        let privateKey = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+        let publicAddress = "16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS";
+
+        let ck = CoinKey.fromWif(privateWif, versions);
+        assert.equal(ck.compressed, false);
+        assert.equal(ck.versions.private, versions.private);
+        assert.equal(ck.versions.public, versions.public);
+        assert.equal(ck.privateKey.toString('hex'), privateKey);
+        assert.equal(ck.publicAddress, publicAddress);
+
+        let privateWifCompressed = "KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3";
+        let publicAddressCompressed = "1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s";
+        let ckCompressed = CoinKey.fromWif(privateWifCompressed, versions);
+        assert.equal(ckCompressed.compressed, true);
+        assert.equal(ckCompressed.versions.private, versions.private);
+        assert.equal(ckCompressed.versions.public, versions.public);
+        assert.equal(ckCompressed.privateKey.toString('hex'), privateKey);
+        assert.equal(ckCompressed.publicAddress, publicAddressCompressed);
+      });
+
+      it('should return a new CoinKey 2 ', function () {
+        let privateWif = "6uFjYQnot5Gtg3HpP87bp4JUpg4FH1gkkV3RyS7LHBbD9Hpt1na";
+        let versions = {"private": 176, "public": 48};
+        let privateKey = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+        let publicAddress = "LQhgskg1LoWWZsbzCo7GpFffvtCV8Z5GKZ";
+
+        let ck = CoinKey.fromWif(privateWif, versions);
+        assert.equal(ck.compressed, false);
+        assert.equal(ck.versions.private, versions.private);
+        assert.equal(ck.versions.public, versions.public);
+        assert.equal(ck.privateKey.toString('hex'), privateKey);
+        assert.equal(ck.publicAddress, publicAddress);
+
+        let privateWifCompressed = "T3e2me1BvRs95K7E8eQ8eha9oRPL1g2U6vmjE5px6RjzbUTvKZsf";
+        let publicAddressCompressed = "LZyGd5dCPVkVUjA5QbpuUfMNgcmNDLjswH";
+        let ckCompressed = CoinKey.fromWif(privateWifCompressed, versions);
+        assert.equal(ckCompressed.compressed, true);
+        assert.equal(ckCompressed.versions.private, versions.private);
+        assert.equal(ckCompressed.versions.public, versions.public);
+        assert.equal(ckCompressed.privateKey.toString('hex'), privateKey);
+        assert.equal(ckCompressed.publicAddress, publicAddressCompressed);
+      });
+
+      it('should return a new CoinKey 3 ', function () {
+        let privateWif = "6JGLNEiEYR6pFGq84gwceHWYLcyKaLWzaymVajjCPPUEGAR2MTT";
+        let versions = {"private": 158, "public": 30};
+        let privateKey = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+        let publicAddress = "DAcq9oJpZZAjr56RmF7Y5zmWboZWQ4HAsW";
+
+        let ck = CoinKey.fromWif(privateWif, versions);
+        assert.equal(ck.compressed, false);
+        assert.equal(ck.versions.private, versions.private);
+        assert.equal(ck.versions.public, versions.public);
+        assert.equal(ck.privateKey.toString('hex'), privateKey);
+        assert.equal(ck.publicAddress, publicAddress);
+
+        let privateWifCompressed = "QPCgUjWzmfNfXzsQBHJ4KZsPKbmaz99PAyZP9ubFFpBBXWuSQh6n";
+        let publicAddressCompressed = "DKtQu8G1cFQikveWy3qAkQTDMY8PKVU18Z";
+        let ckCompressed = CoinKey.fromWif(privateWifCompressed, versions);
+        assert.equal(ckCompressed.compressed, true);
+        assert.equal(ckCompressed.versions.private, versions.private);
+        assert.equal(ckCompressed.versions.public, versions.public);
+        assert.equal(ckCompressed.privateKey.toString('hex'), privateKey);
+        assert.equal(ckCompressed.publicAddress, publicAddressCompressed);
+      });
+    });
+
   });
 });

@@ -44,7 +44,7 @@ class CoinKey extends ECKey {
     let res = Base58Check.decode(wif);
     let version = res.slice(0, 1);
     let privateKey = res.slice(1);
-    let compressed = privateKey === 33;
+    let compressed = privateKey.length === 33;
     if (compressed)
       privateKey = privateKey.slice(0, 32);
 
@@ -52,9 +52,9 @@ class CoinKey extends ECKey {
     v.private = v.private || version.readUInt8(0);
     v.public = v.public || v.private - 0x80;
 
-    let CoinKey = new CoinKey(privateKey, v);
-    CoinKey.compressed = compressed;
-    return CoinKey;
+    let coinkey = new CoinKey(privateKey, v);
+    coinkey.compressed = compressed;
+    return coinkey;
   }
 
   static createRandom(versioins) {
