@@ -14,7 +14,8 @@ a simple js tool for crypto currenty
  const Base58  = require('cryptojstool').Base58;
 
  let hex = "61";
- let result = Base58.encode(hex);
+ let buf = Buffer.from(hex, 'hex');
+ let result = Base58.encode(buf);
 
  ```
 
