@@ -9,6 +9,10 @@ a simple js tool for crypto currenty
 
  ## Usage
 
+ ```
+   npm install cryptojstool -s
+ ```
+
  ```javascript
 
   // Base58
