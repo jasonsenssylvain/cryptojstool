@@ -57,7 +57,7 @@ class CoinKey extends ECKey {
     return coinkey;
   }
 
-  static createRandom(versioins) {
+  static createRandom(versions) {
     let privateKey = secureRandom.randomBuffer(32);
     return new CoinKey(privateKey, versions);
   }

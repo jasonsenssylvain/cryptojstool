@@ -6,6 +6,7 @@ a simple js tool for crypto currenty
 
  * base58
  * eckey
+ * coinkey
 
  ## Usage
 
