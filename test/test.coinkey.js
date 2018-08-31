@@ -1,6 +1,7 @@
 const assert          = require('assert');
 const secureRandom    = require('secure-random');
 const CoinKey         = require('../src/coinkey.js');
+const Base58Check     = require('../src/base58check.js');
 
 describe('CoinKey', function () {
   describe('+ constructor', function () {
@@ -30,8 +31,8 @@ describe('CoinKey', function () {
         let publicAddressCompressed = "LZyGd5dCPVkVUjA5QbpuUfMNgcmNDLjswH";
 
         let ck = new CoinKey(Buffer.from(privateKey, 'hex'), versions)
-        assert.equal(ck.privateWif, privateWifCompressed)
-        assert.equal(ck.publicAddress, publicAddressCompressed)
+        assert.equal(ck.privateWif, privateWifCompressed);
+        assert.equal(ck.publicAddress, publicAddressCompressed);
       })
     })
 

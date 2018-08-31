@@ -51,10 +51,15 @@ class ECKey {
     return this.pubKeyHash;
   }
 
+  static hashPubKey(pubkey) {
+    let sha = crypto.createHash('sha256').update(pubkey).digest();
+    let result = crypto.createHash('rmd160').update(sha).digest();
+    return result;
+  }
+
   get pubKeyHash() {
     if (this._pubKeyHash) return this._pubKeyHash;
-    let sha = crypto.createHash('sha256').update(this.publicKey).digest();
-    this._pubKeyHash = crypto.createHash('rmd160').update(sha).digest();
+    this._pubKeyHash = ECKey.hashPubKey(this.publicKey);
     return this._pubKeyHash;
   }
 
